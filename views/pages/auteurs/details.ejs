@@ -1,0 +1,35 @@
+<%- include('../../partials/header') %>
+
+<section class="card">
+  <div class="page-header">
+    <h1><%= auteur.prenom %> <%= auteur.nom %></h1>
+    <div class="actions-inline">
+      <a href="/auteurs/<%= auteur.id %>/modifier" class="btn">Modifier</a>
+      <a href="/auteurs" class="btn btn-secondary">Retour</a>
+    </div>
+  </div>
+
+  <p><strong>Nationalité :</strong> <%= auteur.nationalite || '-' %></p>
+  <p><strong>Date de naissance :</strong> <span class="format-date"><%= auteur.date_naissance || '' %></span></p>
+  <p><strong>Biographie :</strong></p>
+  <p><%= auteur.biographie || 'Aucune biographie disponible.' %></p>
+</section>
+
+<section class="card">
+  <h2>Livres de cet auteur</h2>
+
+  <% if (livres.length === 0) { %>
+    <p>Aucun livre associé.</p>
+  <% } else { %>
+    <ul class="list">
+      <% livres.forEach(livre => { %>
+        <li>
+          <a href="/livres/<%= livre.id %>"><%= livre.titre %></a>
+          - <%= livre.genre || 'Genre inconnu' %>
+        </li>
+      <% }) %>
+    </ul>
+  <% } %>
+</section>
+
+<%- include('../../partials/footer') %>

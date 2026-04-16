@@ -1,0 +1,33 @@
+<%- include('../partials/header') %>
+
+<section class="hero">
+  <h1>Bienvenue dans la bibliothèque</h1>
+  <p>
+    Cette application permet de gérer les auteurs et les livres avec Node.js,
+    Express, EJS et PostgreSQL.
+  </p>
+
+  <div class="hero-actions">
+    <a href="/auteurs" class="btn">Voir les auteurs</a>
+    <a href="/livres" class="btn btn-secondary">Voir les livres</a>
+  </div>
+</section>
+
+<section class="cards-grid">
+  <article class="card">
+    <h2>Gestion des auteurs</h2>
+    <p>Ajouter, modifier, supprimer et consulter les détails des auteurs.</p>
+  </article>
+
+  <article class="card">
+    <h2>Gestion des livres</h2>
+    <p>Associer chaque livre à un auteur et gérer sa disponibilité.</p>
+  </article>
+
+  <article class="card">
+    <h2>Recherche rapide</h2>
+    <p>Rechercher un livre par titre, genre ou nom d’auteur.</p>
+  </article>
+</section>
+
+<%- include('../partials/footer') %>

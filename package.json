@@ -1,0 +1,23 @@
+{
+  "name": "bibliotheque-app",
+  "version": "1.0.0",
+  "description": "Application de gestion de bibliothèque avec Node.js, Express, EJS et PostgreSQL",
+  "main": "app.js",
+  "type": "module",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.5.0",
+    "ejs": "^3.1.10",
+    "express": "^4.21.2",
+    "pg": "^8.16.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.10"
+  }
+}

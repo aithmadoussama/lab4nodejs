@@ -1,0 +1,27 @@
+<%- include('../../partials/header') %>
+
+<section class="card">
+  <div class="page-header">
+    <h1><%= livre.titre %></h1>
+    <div class="actions-inline">
+      <a href="/livres/<%= livre.id %>/modifier" class="btn">Modifier</a>
+      <a href="/livres" class="btn btn-secondary">Retour</a>
+    </div>
+  </div>
+
+  <p><strong>Auteur :</strong> <%= livre.auteur_prenom %> <%= livre.auteur_nom %></p>
+  <p><strong>Année :</strong> <%= livre.annee_publication || '-' %></p>
+  <p><strong>Genre :</strong> <%= livre.genre || '-' %></p>
+  <p><strong>ISBN :</strong> <%= livre.isbn || '-' %></p>
+  <p>
+    <strong>Disponibilité :</strong>
+    <span class="<%= livre.disponible ? 'badge badge-success' : 'badge badge-danger' %>">
+      <%= livre.disponible ? 'Disponible' : 'Indisponible' %>
+    </span>
+  </p>
+
+  <p><strong>Résumé :</strong></p>
+  <p><%= livre.resume || 'Aucun résumé disponible.' %></p>
+</section>
+
+<%- include('../../partials/footer') %>

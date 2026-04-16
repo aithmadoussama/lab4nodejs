@@ -1,0 +1,58 @@
+<%- include('../../partials/header') %>
+
+<div class="page-header">
+  <div>
+    <h1>Liste des livres</h1>
+    <% if (searchTerm) { %>
+      <p>Recherche : "<strong><%= searchTerm %></strong>"</p>
+    <% } %>
+  </div>
+  <a href="/livres/ajouter" class="btn">Ajouter un livre</a>
+</div>
+
+<% if (livres.length === 0) { %>
+  <div class="card">
+    <p>Aucun livre trouvé.</p>
+  </div>
+<% } else { %>
+  <div class="table-wrapper">
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Titre</th>
+          <th>Auteur</th>
+          <th>Année</th>
+          <th>Genre</th>
+          <th>Disponible</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% livres.forEach(livre => { %>
+          <tr>
+            <td><%= livre.id %></td>
+            <td><%= livre.titre %></td>
+            <td><%= livre.auteur_prenom %> <%= livre.auteur_nom %></td>
+            <td><%= livre.annee_publication || '-' %></td>
+            <td><%= livre.genre || '-' %></td>
+            <td>
+              <span class="<%= livre.disponible ? 'badge badge-success' : 'badge badge-danger' %>">
+                <%= livre.disponible ? 'Oui' : 'Non' %>
+              </span>
+            </td>
+            <td class="actions">
+              <a href="/livres/<%= livre.id %>" class="btn-small">Détails</a>
+              <a href="/livres/<%= livre.id %>/modifier" class="btn-small btn-warning">Modifier</a>
+              <form action="/livres/<%= livre.id %>/supprimer" method="POST" onsubmit="return confirm('Supprimer ce livre ?')">
+                <button type="submit" class="btn-small btn-danger">Supprimer</button>
+              </form>
+            </td>
+          </tr>
+        <% }) %>
+      </tbody>
+    </table>
+  </div>
+<% } %>
+
+<%- include('../../partials/footer') %>

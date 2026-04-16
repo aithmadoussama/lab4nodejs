@@ -1,0 +1,58 @@
+<%- include('../../partials/header') %>
+
+<section class="form-card">
+  <h1>Modifier un livre</h1>
+
+  <form action="/livres/<%= livre.id %>/modifier" method="POST" class="form-grid">
+    <div class="full-width">
+      <label>Titre</label>
+      <input type="text" name="titre" value="<%= livre.titre %>" required>
+    </div>
+
+    <div>
+      <label>Auteur</label>
+      <select name="auteur_id" required>
+        <option value="">-- Choisir un auteur --</option>
+        <% auteurs.forEach(auteur => { %>
+          <option value="<%= auteur.id %>" <%= auteur.id === livre.auteur_id ? 'selected' : '' %>>
+            <%= auteur.prenom %> <%= auteur.nom %>
+          </option>
+        <% }) %>
+      </select>
+    </div>
+
+    <div>
+      <label>Année de publication</label>
+      <input type="number" name="annee_publication" value="<%= livre.annee_publication || '' %>">
+    </div>
+
+    <div>
+      <label>Genre</label>
+      <input type="text" name="genre" value="<%= livre.genre || '' %>">
+    </div>
+
+    <div>
+      <label>ISBN</label>
+      <input type="text" name="isbn" value="<%= livre.isbn || '' %>">
+    </div>
+
+    <div class="full-width">
+      <label>Résumé</label>
+      <textarea name="resume" rows="5"><%= livre.resume || '' %></textarea>
+    </div>
+
+    <div class="full-width checkbox-group">
+      <label>
+        <input type="checkbox" name="disponible" <%= livre.disponible ? 'checked' : '' %>>
+        Disponible
+      </label>
+    </div>
+
+    <div class="full-width form-actions">
+      <button type="submit" class="btn">Enregistrer</button>
+      <a href="/livres/<%= livre.id %>" class="btn btn-secondary">Annuler</a>
+    </div>
+  </form>
+</section>
+
+<%- include('../../partials/footer') %>
